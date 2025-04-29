@@ -18,7 +18,7 @@ public class BookProxyController {
 
     @GetMapping("/client/books")
     public ResponseEntity<List<String>> getBooksFromApi() {
-        List<String> books = bookClient.getBooks();
+        List<Book> books = bookClient.getBooks();
         return ResponseEntity.ok(books);
     }
 }
