@@ -17,13 +17,13 @@ public class BookClient {
         this.restTemplate=restTemplate;
     }
 
-    public List<String> getBooks(){
+    public List<List<Book>> getBooks(){
         String uri = "http://localhost:8080/api/books";
         HttpHeaders header = new HttpHeaders();
         header.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<Void> httpEntity = new HttpEntity<>(header);
-        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, String.class);
+        ResponseEntity<List<Book>> response = restTemplate.exchange(uri, HttpMethod.GET, httpEntity, List.class);
 
-        return Collections.singletonList(response.getBody());
+        return response.getBody();
     }
 }
